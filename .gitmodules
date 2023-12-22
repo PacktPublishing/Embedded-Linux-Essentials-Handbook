@@ -1,0 +1,6 @@
+[submodule "linux"]
+	path = linux
+	url = https://github.com/raspberrypi/linux
+[submodule "Chapter2/linux"]
+	path = Chapter2/linux
+	url = https://github.com/raspberrypi/linux
