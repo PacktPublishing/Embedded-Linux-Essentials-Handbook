@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+&rp1_i2c1 {
+    mcp4725@62 {
+        compatible = "microchip,mcp4725";
+        reg = <0x62>;
+	vdd-supply = <&rp1_vdd_3v3>;
+    };
+};
