@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<default sync-j="8"/>
+	<remote alias="repo" fetch="git://git.yoctoproject.org" name="rpi"/>
+	<remote alias="repo" fetch="https://git.yoctoproject.org" name="yocto"/>
+
+	<project name="poky" path="layers/poky" remote ="yocto" revision="6d1a878bbf24c66f7186b270f823fcdf82e35383" upstream="kirkstone"/>
+	<project name="meta-raspberrypi" path="layers/meta-raspberrypi" remote="rpi" revision="9dc6673d41044f1174551120ce63501421dbcd85" upstream="kirkstone"/>
+</manifest>
