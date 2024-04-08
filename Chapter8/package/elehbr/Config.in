@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ELEHBR
+    bool "elehbr"
+    help
+        Embedded Linux Essentials Handbook Buildroot application.
