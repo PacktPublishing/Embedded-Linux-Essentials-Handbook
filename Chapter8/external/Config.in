@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_ELEHBR_PATH/package/elehbr/Config.in"

@@ -1,7 +1,6 @@
 .PHONY: clean
-.PHONY: eleh-br
 
-eleh-br: eleh_br.c
+elehbr: eleh_br.c
 	$(CC) -o $@ $^
 
 clean:
