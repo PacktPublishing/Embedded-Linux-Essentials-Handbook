@@ -1,5 +1,5 @@
 config:
-	make -C buildroot BR2_EXTERNAL=`pwd`/external raspberrypi4_64_defconfig
+	make -C buildroot BR2_EXTERNAL=`pwd`/external elehbr_defconfig
 
 elehbr:
 	make -C buildroot BR2_EXTERNAL=`pwd`/external elehbr
