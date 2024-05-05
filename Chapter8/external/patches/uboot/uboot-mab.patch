@@ -1,0 +1,12 @@
+Index: uboot-2024.01/common/main.c
+===================================================================
+--- uboot-2024.01.orig/common/main.c
++++ uboot-2024.01/common/main.c
+@@ -47,6 +47,7 @@ void main_loop(void)
+ 	if (IS_ENABLED(CONFIG_VERSION_VARIABLE))
+ 		env_set("ver", version_string);  /* set version variable */
+ 
++	printf("MAB MAB MAB\n");
+ 	cli_init();
+ 
+ 	if (IS_ENABLED(CONFIG_USE_PREBOOT))

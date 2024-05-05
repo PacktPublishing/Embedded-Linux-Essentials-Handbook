@@ -1,0 +1,12 @@
+Index: linux-headers-custom/init/main.c
+===================================================================
+--- linux-headers-custom.orig/init/main.c
++++ linux-headers-custom/init/main.c
+@@ -1528,6 +1528,7 @@ static int __ref kernel_init(void *unuse
+ 
+ 	rcu_end_inkernel_boot();
+ 
++	printk("MAB MAB MAB\n");
+ 	do_sysctl_args();
+ 
+ 	if (ramdisk_execute_command) {
