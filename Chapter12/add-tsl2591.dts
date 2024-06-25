@@ -1,0 +1,9 @@
+/dts-v1/;
+/plugin/;
+
+&rp1_i2c1 {
+    tsl2591@28 {
+        compatible = "amstaos,tsl2591";
+        reg = <0x29>;
+    };
+};
