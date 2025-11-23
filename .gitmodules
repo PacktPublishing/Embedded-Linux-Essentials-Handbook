@@ -2,8 +2,8 @@
 	path = linux
 	url = https://github.com/raspberrypi/linux
 [submodule "Chapter2/linux"]
-	path = Chapter2/linux
+	path = Chapter3/linux
 	url = https://github.com/raspberrypi/linux
 [submodule "Chapter8/buildroot"]
-	path = Chapter8/buildroot
+	path = Chapter7/buildroot
 	url = https://github.com/buildroot/buildroot.git
