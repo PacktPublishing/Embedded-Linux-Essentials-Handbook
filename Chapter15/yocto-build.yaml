@@ -1,0 +1,44 @@
+name: yocto-bsp
+  on:
+    push:
+      tags:
+        - 'v*'
+
+jobs:
+  make-release:
+    runs-on: yocto
+    steps:
+      - name: Checkout Dockerfile for Yocto builds
+        uses: actions/checkout@v3
+        with:
+          repository: mabembedded/dockerfiles
+      - name: Create Docker container for Yocto builds
+        run:  |
+              docker build -t yocto-builder .
+      - name: Create repo manifest in Docker container
+        run:  |
+              mkdir yocto
+              docker run -v${GITHUB_WORKSPACE}/yocto:/home/dev/src:z --user $UID --workdir /home/dev/src yocto-builder bash -c '/home/dev/bin/repo init -u <repo-manifest_url> -m default.xml -b main; /home/dev/bin/repo sync; source setup.sh; bitbake rpi-test-image'
+              cp ${GITHUB_WORKSPACE}/yocto/build*/tmp/deploy/images/raspberrypi5/raspberrypi5.wic.bz2 ./
+              echo "FINAL_IMAGE=$(ls ./*.wic.bz2)" >> $GITHUB_ENV
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: tps_cicd_${{ github.ref_name }}
+          body: Actual release notes
+          draft: false
+          prerelease: false
+      - name: Upload Release
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.FINAL_IMAGE }}
+          asset_name: ${{ env.FINAL_IMAGE }}
+          asset_content_type: application/x-bzip2
